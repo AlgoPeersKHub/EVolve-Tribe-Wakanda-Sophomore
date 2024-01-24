@@ -21,11 +21,11 @@ while True:
 
     #Here we are telling the Raspberry Pi how much we need to move the servo based on which LDR is recieving the highest light intensity.
     if smallest_variable == "reading3": #If the smallest reading is ldr_3 then it will move the servo to an angle of 150 degrees.
-        my_servo.write(150)    
+        solar_servo.write(150)    
     elif smallest_variable == "reading2": #If the smallest reading is ldr_2 then it will move the servo to an angle of 90 degrees.
-        my_servo.write(90)
+        solar_servo.write(90)
     else:                                
-        my_servo.write(30) #If the smallest reading is ldr_1 then it will move the servo to an angle of 30 degrees
+        solar_servo.write(30) #If the smallest reading is ldr_1 then it will move the servo to an angle of 30 degrees
     #Feel free to adjust the angles to suit your design
   
     #Prints all the values of the LDRs and the maximum value
