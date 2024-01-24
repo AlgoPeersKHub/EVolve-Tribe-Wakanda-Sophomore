@@ -15,7 +15,7 @@ while True: #Creates a while loop which reads the values from the BME
 temp_adc = machine.ADC(4) #ADC pin 4 is an Analog to Digital Pin that has a temperature sensor.
 while True:
     ADC_read = temp_adc.read_u16()  #Here we are reading the digital values across ADC pin 4. These digital values change depending on the temperature. 
-    ADC_voltage = (ADC_read* (3.3 / (65536)) #Here we are converting the digital values into voltage values. 
+    ADC_voltage = (ADC_read* (3.3 / (65535)) #Here we are converting the digital values into voltage values. 
                                              #The voltage values the ADC can take swing from 0V to 3.3V, so if we divide them by the number of digital bits, it gives the voltage per bit. 
                                              #Multiplying by the digital value gives the voltage across ADC 4. 
     temperature_celcius = 27 - (ADC_voltage - 0.706)/0.001721 # This equations simply converts the voltage values into temperature values in degreees.
