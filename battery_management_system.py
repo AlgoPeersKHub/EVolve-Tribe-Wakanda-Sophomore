@@ -33,7 +33,7 @@ print(bin(readConfig()))
 
 whileTrue:
     val = readValue()
-    print("val = ", val, "\tVolts = ", (3.3/26250) * val)
+    print((3.3/26250) * val)
     utime.sleep(0.1)
 
 #from https://www.youtube.com/watch?v=HiuNYLDvY9k&t=334s
