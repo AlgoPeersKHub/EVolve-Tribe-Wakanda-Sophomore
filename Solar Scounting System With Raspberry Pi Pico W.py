@@ -24,7 +24,7 @@ ADC_RESOLUTION = 65535  # The range of values the ADC can output
 timestamps = []
 voltages = []
 
-def read_voltage():
+def calculate_voltage():
     # Get the raw value from the ADC (a number between 0 and 65535)
     raw_value = adc.read_u16()
     
@@ -35,7 +35,7 @@ def read_voltage():
 def main():
     while True:
         # Read the voltage from the solar panel
-        voltage = read_voltage()
+        voltage = calculate_voltage()
         
         # Clear the LCD screen
         lcd.clear()
