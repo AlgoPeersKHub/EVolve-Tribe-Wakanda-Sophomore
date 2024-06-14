@@ -32,7 +32,20 @@ def calculate_voltage():
     voltage = (raw_value / ADC_RESOLUTION) * VREF
     return voltage
 
+def append_data_to_file(timestamp_str,voltage):
+    try:
+        with open("voltage_data.csv", "a") as data_file: # open the file in append mode
+            data_file.write("{}, {:.2f}\n".format(timestamp_str, voltage))
+    except Exception as e:
+        print("Error writing to file:", e)
+
+
 def main():
+    
+    with open("voltage_data.csv", "w")as data_file:
+        data_file.write("Timestamp, Voltage \n")
+    
+        
     while True:
         # Read the voltage from the solar panel
         voltage = calculate_voltage()
@@ -54,20 +67,13 @@ def main():
 
         # Print the timestamp and voltage to the Thonny console
         print("Timestamp: {}, Voltage: {:.2f}V".format(timestamp_str, voltage))
-
         
-        # Open a file to store data
-        data_file = open("voltage_data.csv", "w")
-        data_file.write("Timestamp,Voltage\n")
         
-        # Write the voltage and timestamp to the file
-        data_file.write("{}, {:.2f}\n".format(timestamp_str, voltage))
-        data_file.flush()  # Ensure data is written to the file
+        append_data_to_file(timestamp_str, voltage)
         
         
         # Wait for 1 second before reading the voltage again
         utime.sleep(1)
-        
         
         led = Pin(5, Pin.OUT)\
         
@@ -82,15 +88,15 @@ def main():
         # Wait for 5 second before reading the voltage again
         utime.sleep(1)
 
-
-main()
-# Call the main function to start the process
 try:
     main()
 except KeyboardInterrupt:
-    # Close the data file when the program is interrupted
-    data_file.close()
-    print("Data file closed.")
+    print("Program Interrupted")
+    
+try:
+    with open("voltage_data.csv","r") as data_file:
+        pass
+except OSError:
+    with open("voltage_data.csv", "w") as data_file:
+        data_file.write("Timestamp, Voltage\n")
 
-        
-        
