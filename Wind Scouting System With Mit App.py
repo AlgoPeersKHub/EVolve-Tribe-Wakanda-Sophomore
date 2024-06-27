@@ -16,7 +16,7 @@ timestamps = []
 voltages = []
 
 
-def read_anemometer():
+def read_wind_speed():
     # Read the ADC value
     adc_value = adc.read_u16()
     # Convert the ADC value to voltage (3.3V reference, 16-bit resolution)
@@ -24,7 +24,7 @@ def read_anemometer():
     return voltage
 
 
-def append_data_to_file(timestamp_str, voltage):
+def append_wind_speed_data_to_file(timestamp_str, voltage):
     try:
         # Open the file in append mode
         with open("wind_speed_voltage.csv", "a") as data_file:
@@ -35,7 +35,7 @@ def append_data_to_file(timestamp_str, voltage):
 
 
 while True:
-    voltage = read_anemometer()
+    voltage = read_wind_speed()
     # Print the voltage (which corresponds to wind speed)
 
     # Get the current timestamp
@@ -46,7 +46,7 @@ while True:
         )
 
     # Append data to the file
-    append_data_to_file(timestamp_str, voltage)
+    append_wind_speed_data_to_file(timestamp_str, voltage)
     
     print("Wind speed voltage:", voltage)
 
@@ -58,7 +58,7 @@ while True:
     utime.sleep(1)
 
 
-# Initialize the file with headers if it doesn't exist
+# Initialize the data file with headers if it doesn't exist
     try:
         with open("wind_speed_voltage.csv", "r") as data_file:
             pass
