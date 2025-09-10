@@ -1,7 +1,9 @@
 # EVolve Project
 
 
-This repository contains the codes/program for the various hands-on projects for a 4-month STEAM project named EVolve
+This repository showcases codes k-12 learners aged 7–15 used in the Climate Change module in the After-School Program. Using the BBC micro:bit (programmed with Microsoft MakeCode) and Raspberry Pi Pico W (using Thonny IDE with MicroPython), learners built practical solutions to local climate challenges such as heatwave alerts, drought early warning systems, and renewable energy scouts.
+Informed by Constructionism (Papert, 1980), the program integrated Culturally Relevant Pedagogy (Ladson-Billings, 1995), Universal Design for Learning (CAST, 2018), and Social Constructivism (Vygotsky, 1978) to support inclusive, hands-on STEAM learning. 
+
 
 # About The EVolve Project:
 
